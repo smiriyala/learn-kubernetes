@@ -16,12 +16,21 @@ metadata:
 spec:
   containers:
     - name: cart
-      image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/cart:v1.0.2
+      image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/cart:v14.0.2
+      volumeMounts:
+        - mountPath: /params
+          name: params
   initContainers:
     - name: aws-ssm-param-storet
       image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:v1.0.2
-      args: ["sample: dev.docdb.pass"]
-
+      args: ["User: dev.docdb.user", "REDIS_HOST: dev..elasticache.endpoint", "CATALOGUE_HOST: dev.cart.catalogue_host", "CATALOGUE_PORT: dev.cart.catalogue_port" ]
+      volumeMounts:
+        - mountPath: /params
+          name: params
+  Volumes:
+    - name: params
+      emptyDir:
+        sizeLimit: 100Mi
 
 ---
 apiVersion: v1
