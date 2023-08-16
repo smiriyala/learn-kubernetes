@@ -4,9 +4,7 @@ metadata:
   name: cart
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::934235628328:role/ssm-for-eks
-# spec:
-#   ServiceAccountName: cart
-
+    
 ---
 
 apiVersion: v1
@@ -16,7 +14,7 @@ metadata:
   labels:
     component: cart
 spec:
-  # ServiceAccountName: cart
+  ServiceAccountName: cart
   containers:
     - name: cart
       image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/cart:v1.0.2
