@@ -22,8 +22,8 @@ spec:
       image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/cart:v1.0.2
   initContainers:
     - name: aws-ssm-param-storet
-      image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-params-store:v1.0.2
-      args: ["sample: dev.doddb.pass"]
+      image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:v1.0.2
+      args: ["sample: dev.docdb.pass"]
 
 
 ---
