@@ -27,7 +27,7 @@ spec:
       volumeMounts:
         - mountPath: /params
           name: params
-  Volumes:
+  volumes:
     - name: params
       emptyDir:
         sizeLimit: 100Mi
