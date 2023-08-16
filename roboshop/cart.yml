@@ -1,3 +1,14 @@
+apiVersion: v1 
+kind: ServiceAccount
+metadata:
+  name: cart
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::934235628328:role/ssm-for-eks
+spec:
+  ServiceAccountName: cart
+
+---
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -5,9 +16,14 @@ metadata:
   labels:
     component: cart
 spec:
+  ServiceAccountName: cart
   containers:
     - name: cart
       image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/cart:v1.0.2
+  initcontainers:
+    - name: cart
+      image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-params-store:v1.0.2
+      args: ["sample: dev.doddb.pass"]
 
 
 ---
