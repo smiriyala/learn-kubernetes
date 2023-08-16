@@ -23,7 +23,7 @@ spec:
   initContainers:
     - name: aws-ssm-param-storet
       image: 934235628328.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:v1.0.2
-      args: ["User:dev.catalogue.user", "MONGO:dev.catalogue.mongo", "DOCUMENTDB:dev.catalogue.documentdb", "MONGO_URL:dev.docdb.url.catalogue"]
+      args: [ "User:dev.catalogue.user" , "MONGO:dev.catalogue.mongo" , "DOCUMENTDB:dev.catalogue.documentdb" , "MONGO_URL:dev.docdb.url.catalogue" ]
       volumeMounts:
         - mountPath: /params
           name: params
